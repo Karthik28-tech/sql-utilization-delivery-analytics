@@ -61,7 +61,11 @@ A 4-table normalized schema: `clients` → `projects` → `timesheets` ← `empl
 | Transactions (COMMIT/ROLLBACK) | Demonstrated with a deliberate rollback scenario |
 | Indexing + EXPLAIN | Measured query plan before/after adding an index — full table scan (1,177 rows) to indexed lookup (13 rows) |
 
-Full annotated script: [`utilization_delivery_analytics.sql`](utilization_delivery_analytics.sql)
+## Query Results
+![CTE + window function: utilization ranking by department](docs/screenshots/cte_window_ranking.jpg)
+![Indexed lookup — 13 rows examined via idx_timesheets_workdate (vs. 1,177 before indexing)](docs/screenshots/explain_indexed_lookup.jpg)
+![Trigger-generated audit log entry](docs/screenshots/trigger_audit_log.jpg)
+![Stored procedure flagging low-utilization employees](docs/screenshots/stored_procedure_call.jpg)
 
 ## Sample Business Questions Answered
 - What's each employee's utilization rate by month, and how does it rank within their department?
